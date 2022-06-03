@@ -52,3 +52,5 @@ https://djoser.readthedocs.io/en/latest/getting_started.html
 <!--  -->
 $ pip install mysqlclient
 
+
+

@@ -16,18 +16,18 @@ env = environ.Env(
   DEBUG=(bool, False)
 )
 
-SECRET_KEY = env('SECRET_KEY')
-DEBUG = env("DEBUG")
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2yd4u=@ww%g!3@b*$^g-&yrc4)fbx6n4o^p%5a5s4j@j%)3s6c'
+# SECRET_KEY = 'django-insecure-2yd4u=@ww%g!3@b*$^g-&yrc4)fbx6n4o^p%5a5s4j@j%)3s6c'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = []
 
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.auth',
     'debug_toolbar',
     'rest_framework',
     'djoser',
@@ -90,8 +89,17 @@ WSGI_APPLICATION = 'workoutApp.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default':  env.db(),
+    # 'default': {
+    #     'ENGINE'  : 'django.db.backends.mysql',  
+    #     'NAME'    : env("DB_NAME"),                  
+    #     'USER'    : env("DB_USER"),                     
+    #     'PASSWORD': env("DB_PASSWORD"),              
+    #     'HOST'    : env("DB_HOST"),              
+    #     'PORT'    : env("DB_PORT"),
+    # },
     'default': {
-        'ENGINE'  : 'django.db.backends.mysql',  
+        'ENGINE': 'django.db.backends.postgresql',  
         'NAME'    : env("DB_NAME"),                  
         'USER'    : env("DB_USER"),                     
         'PASSWORD': env("DB_PASSWORD"),              
@@ -103,6 +111,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES['default'] = DATABASES[os.environ.get('DATABASE_TYPE', default='test')]
 
 
 # Password validation
@@ -145,3 +154,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
+    ]
+}

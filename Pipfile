@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 django = "*"
 django-environ = "*"
-mysqlclient = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
 social-auth-app-django = "*"
@@ -14,6 +13,7 @@ djangorestframework = "*"
 django-filter = "*"
 drf-nested-routers = "*"
 django-debug-toolbar = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

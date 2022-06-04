@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rest_framework',
     'djoser',
-    'app'
+    'core'
 ]
 
 MIDDLEWARE = [
@@ -64,7 +64,7 @@ INTERNAL_IPS = [
     # ...
 ]
 
-ROOT_URLCONF = 'workoutApp.urls'
+ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
     {
@@ -82,14 +82,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'workoutApp.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default':  env.db(),
     # 'default': {
     #     'ENGINE'  : 'django.db.backends.mysql',  
     #     'NAME'    : env("DB_NAME"),                  

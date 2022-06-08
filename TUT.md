@@ -48,9 +48,13 @@ https://djecrety.ir/
 https://blog.saurav-shrivastav.tech/setting-up-a-basic-django-project-with-pipenv
 https://djoser.readthedocs.io/en/latest/getting_started.html
 
-
 <!--  -->
+
 $ pip install mysqlclient
 
+- Learn Postgresql
+  https://www.postgresqltutorial.com/postgresql-cheat-sheet/
 
+- custom user 
 
+https://cpadiernos.github.io/how-to-add-fields-to-the-user-model-in-django.html

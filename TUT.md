@@ -55,6 +55,7 @@ $ pip install mysqlclient
 - Learn Postgresql
   https://www.postgresqltutorial.com/postgresql-cheat-sheet/
 
-- custom user 
+- custom user
 
 https://cpadiernos.github.io/how-to-add-fields-to-the-user-model-in-django.html
+https://youtu.be/KiJFHBQ44sw

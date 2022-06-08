@@ -1,3 +1,4 @@
+from datetime import timedelta
 import os
 import environ
 
@@ -17,13 +18,7 @@ env = environ.Env(
 )
 
 
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-2yd4u=@ww%g!3@b*$^g-&yrc4)fbx6n4o^p%5a5s4j@j%)3s6c'
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -43,12 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'rest_framework',
+    'rest_frramework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'djoser',
     'core',
     'accounts'
 ]
 
 MIDDLEWARE = [
+    'social_django.middleware.SocialAuthExceptionMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -78,6 +76,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -145,6 +145,7 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -156,13 +157,23 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+
      'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 SIMPLE_JWT = {
    'AUTH_HEADER_TYPES': ('JWT',),
+   'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 DJOSER = {
@@ -176,15 +187,25 @@ DJOSER = {
     'USERNAME_RESET_CONFIRM_URL':'email/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL':'/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL':True,
+    'SOCIAL_AUTH_TOKEN_STRATEGY':'djoser.social.token.jwt.TokenStrategy',
+    'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS':['http://localhost:8000/'],
     'SERIALIZERS': {
         'user_create':'accounts.serializers.UserCreateSerializer',
         'user':'accounts.serializers.UserCreateSerializer',
         'user_delete':'djsoser.serializers.UserDeleteSerializer',
+        'current_user':'accounts.serializers.UserCreateSerializer',
     }
 }
 
+# GOOGLE AUTH CREDENTIALS
+
+
 AUTH_USER_MODEL = 'accounts.UserAccount'
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('GOOGLE_CLIENT_ID')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('GOOGLE_CLIENT_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile','openid']
+SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = ['first_name','last_name']
 # EMAIL 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

@@ -59,3 +59,5 @@ $ pip install mysqlclient
 
 https://cpadiernos.github.io/how-to-add-fields-to-the-user-model-in-django.html
 https://youtu.be/KiJFHBQ44sw
+https://youtu.be/Ae7nc1EGv-A
+https://youtu.be/KiJFHBQ44sw

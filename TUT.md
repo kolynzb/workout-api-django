@@ -61,3 +61,10 @@ https://cpadiernos.github.io/how-to-add-fields-to-the-user-model-in-django.html
 https://youtu.be/KiJFHBQ44sw
 https://youtu.be/Ae7nc1EGv-A
 https://youtu.be/KiJFHBQ44sw
+
+#
+
+- [Deployment Checklist](https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/)
+- [Custom User Model](https://docs.djangoproject.com/en/4.0/topics/auth/customizing/#specifying-a-custom-user-model)
+- [unittest library](https://docs.python.org/3/library/unittest.html)
+- [Code Formatter](https://pypi.org/project/black/)

@@ -49,6 +49,7 @@
 - https://djoser.readthedocs.io/en/latest/getting_started.html
 
 <!--  -->
+
 - Learn Postgresql
   https://www.postgresqltutorial.com/postgresql-cheat-sheet/
 
@@ -67,3 +68,4 @@ https://youtu.be/KiJFHBQ44sw
 - [Code Formatter](https://pypi.org/project/black/)
 - [Upgrade all outdated packages](https://www.activestate.com/resources/quick-reads/how-to-update-all-python-packages/)
 - [Model Validators](https://docs.djangoproject.com/en/2.2/ref/validators/)
+- [Model Relations ](https://medium.com/django-rest/django-model-relations-63709bccb72d)

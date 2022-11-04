@@ -44,14 +44,11 @@
 
 ### Create Environement Variables for Django
 
-https://djecrety.ir/
-https://blog.saurav-shrivastav.tech/setting-up-a-basic-django-project-with-pipenv
-https://djoser.readthedocs.io/en/latest/getting_started.html
+- https://djecrety.ir/
+- https://blog.saurav-shrivastav.tech/-setting-up-a-basic-django-project-with-pipenv
+- https://djoser.readthedocs.io/en/latest/getting_started.html
 
 <!--  -->
-
-$ pip install mysqlclient
-
 - Learn Postgresql
   https://www.postgresqltutorial.com/postgresql-cheat-sheet/
 
@@ -68,3 +65,5 @@ https://youtu.be/KiJFHBQ44sw
 - [Custom User Model](https://docs.djangoproject.com/en/4.0/topics/auth/customizing/#specifying-a-custom-user-model)
 - [unittest library](https://docs.python.org/3/library/unittest.html)
 - [Code Formatter](https://pypi.org/project/black/)
+- [Upgrade all outdated packages](https://www.activestate.com/resources/quick-reads/how-to-update-all-python-packages/)
+- [Model Validators](https://docs.djangoproject.com/en/2.2/ref/validators/)
